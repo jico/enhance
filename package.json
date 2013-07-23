@@ -1,0 +1,33 @@
+{
+  "name":        "enhance",
+  "version":     "0.0.1",
+  "description": "Enhancing images for retina screens since 2013",
+  "homepage":    "https://github.com/jico/enhance",
+  "author": {
+    "name":  "Jico Baligod",
+    "email": "jico@baligod.com",
+    "url":   "http://baligod.com"
+  },
+  "repository": {
+    "type": "git",
+    "url":  "https://github.com/jico/enhance"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url":  "http://github.com/jico/enhance/raw/master/LICENSE"
+    }
+  ],
+  "devDependencies": {
+    "coffee-script": "1.6.3",
+    "expect.js":     "0.2.0",
+    "jsdom":         "0.5.6",
+    "mocha":         "1.8.2"
+  },
+  "main": "./index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/coffee -co . src",
+    "test":  "./node_modules/.bin/mocha --reporter spec --timeout 4000 --ignore-leaks",
+    "watch": "./node_modules/.bin/coffee -wo . src"
+  }
+}
