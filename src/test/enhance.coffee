@@ -32,12 +32,12 @@ describe 'Enhance', ->
       done()
 
   describe '#render', ->
-    describe 'default Apple retina naming convention', ->
+    describe 'default Apple Retina naming convention', ->
       it 'returns the original filename for non-retina devices', (done) ->
-        expect(Enhance().render('image.png')).to.eql('image.png')
+        expect(Enhance().render('image.png')).to.be('image.png')
         done()
 
       it 'returns a suffixed filename for retina devices', (done) ->
         `window.devicePixelRatio = 2.0`
-        expect(Enhance().render('image.png')).to.eql('image@2x.png')
+        expect(Enhance().render('image.png')).to.be('image@2x.png')
         done()

@@ -11,9 +11,14 @@ Enhance = do ->
 
       window.devicePixelRatio > ratio || window.matchMedia?(query).matches?
 
+    parseExtension = (src) ->
+      str = src.split('.').slice(-1)
+      str.match(/jpe?g|png|bmp|gif|ti?ff/i)
+
     render = (src) ->
       if isHiRes()
-        # TODO
+        i = src.lastIndexOf('.')
+        src.slice(0,i) + '@2x' + src.slice(i)
       else
         src
 
