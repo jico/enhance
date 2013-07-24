@@ -41,3 +41,9 @@ describe 'Enhance', ->
         `window.devicePixelRatio = 2.0`
         expect(Enhance().render('image.png')).to.be('image@2x.png')
         done()
+
+    describe 'suffix option', ->
+      it 'appends the given suffix for retina devices', (done) ->
+        `window.devicePixelRatio = 2.0`
+        expect(Enhance(suffix: '_2x').render('image.png')).to.be('image_2x.png')
+        done()
