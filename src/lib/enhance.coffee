@@ -12,16 +12,15 @@ Enhance = do ->
         only screen and (min-device-pixel-ratio: #{ratio}), \
         only screen and (min-resolution: #{ratio}dppx)"
 
-      window.devicePixelRatio > ratio || window.matchMedia?(query).matches?
+      if window.devicePixelRatio > ratio
+        return true
+      if window.matchMedia?(query).matches
+        return true
+      return false
 
     prependHost = (pathname) ->
       pathname = '/' + pathname if options.host.length && pathname[0] != '/'
       options.host + pathname
-
-    # TODO: Keep this?
-    # parseExtension = (src) ->
-      # str = src.split('.').slice(-1)
-      # str.match(/jpe?g|png|bmp|gif|ti?ff/i)
 
     render = (src) ->
       if isHiRes()

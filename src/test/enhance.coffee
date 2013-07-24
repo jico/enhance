@@ -6,6 +6,7 @@ Enhance = require('../lib/enhance')
 describe 'Enhance', ->
   beforeEach ->
     `window = jsdom.createWindow()`
+    `window.matchMedia = function() { return { matches: false } }`
 
   describe '#isHiRes', ->
     it 'returns true if devicePixelRatio less than 1.3 by default', (done) ->
