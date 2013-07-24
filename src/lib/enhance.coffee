@@ -1,6 +1,7 @@
 Enhance = do ->
   (options) ->
     options ?= {}
+    options.host   or= ''
     options.suffix or= '@2x'
 
     isHiRes = (ratio) ->
@@ -13,6 +14,10 @@ Enhance = do ->
 
       window.devicePixelRatio > ratio || window.matchMedia?(query).matches?
 
+    prependHost = (pathname) ->
+      pathname = '/' + pathname if options.host.length && pathname[0] != '/'
+      options.host + pathname
+
     # TODO: Keep this?
     # parseExtension = (src) ->
       # str = src.split('.').slice(-1)
@@ -21,9 +26,8 @@ Enhance = do ->
     render = (src) ->
       if isHiRes()
         i = src.lastIndexOf('.')
-        src.slice(0,i) + options.suffix + src.slice(i)
-      else
-        src
+        src = src.slice(0,i) + options.suffix + src.slice(i)
+      prependHost(src)
 
     exports =
       isHiRes: isHiRes

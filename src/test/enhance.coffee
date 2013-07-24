@@ -47,3 +47,14 @@ describe 'Enhance', ->
         `window.devicePixelRatio = 2.0`
         expect(Enhance(suffix: '_2x').render('image.png')).to.be('image_2x.png')
         done()
+
+    describe 'host option', ->
+      it 'prepends the given host for non-retina devices', (done) ->
+        `window.devicePixelRatio = 1.0`
+        expect(Enhance(host: 'http://example.com').render('image.png')).to.be('http://example.com/image.png')
+        done()
+
+      it 'prepends the given host for retina devices', (done) ->
+        `window.devicePixelRatio = 2.0`
+        expect(Enhance(host: 'http://example.com').render('image.png')).to.be('http://example.com/image@2x.png')
+        done()
