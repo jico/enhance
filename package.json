@@ -1,7 +1,7 @@
 {
   "name":        "enhance",
-  "version":     "0.0.1",
-  "description": "Enhancing images for retina screens since 2013",
+  "version":     "0.0.0",
+  "description": "Enhancing images for Retina screens since 2013",
   "homepage":    "https://github.com/jico/enhance",
   "author": {
     "name":  "Jico Baligod",
