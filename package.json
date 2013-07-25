@@ -1,7 +1,7 @@
 {
   "name":        "enhance",
   "version":     "0.0.0",
-  "description": "Enhancing images for Retina screens since 2013",
+  "description": "A flexible node.js module for serving high resolution images to high pixel density devices",
   "homepage":    "https://github.com/jico/enhance",
   "author": {
     "name":  "Jico Baligod",
@@ -18,6 +18,9 @@
       "url":  "http://github.com/jico/enhance/raw/master/LICENSE"
     }
   ],
+  "dependencies": {
+    "lodash": "1.3.1"
+  },
   "devDependencies": {
     "coffee-script": "1.6.3",
     "expect.js":     "0.2.0",
