@@ -27,13 +27,11 @@ Enhance = do ->
       isHiDPI:     isHiDPI
 
     render = (src, opts) ->
-      opts = _.merge({ src: src }, opts)
       if options.render?
-        options.render?(_.merge({}, options, opts, helpers))
+        options.render?(_.merge({ src: src }, options, opts, helpers))
       else
-        if isHiDPI()
-          i   = src.lastIndexOf('.')
-          src = src.slice(0,i) + options.suffix + src.slice(i)
+        regexp = new RegExp(/(.jpe?g|.png|.gif|.ti?ff?)/i)
+        src    = src.replace(regexp, "#{options.suffix}$1") if isHiDPI()
         _.joinURIComponents(options.host, src)
 
 

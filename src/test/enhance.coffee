@@ -111,3 +111,32 @@ describe 'Enhance', ->
         setRetina()
         expect(Enhance().render('image.png')).to.be('image@2x.png')
         done()
+
+    describe 'suffixing image formats', ->
+      it 'suffixes jpeg and jpg extensions', (done) ->
+        setRetina()
+        expect(Enhance().render('image.jpg')).to.be('image@2x.jpg')
+        expect(Enhance().render('image.jpeg')).to.be('image@2x.jpeg')
+        done()
+
+      it 'suffixes png extensions', (done) ->
+        setRetina()
+        expect(Enhance().render('image.png')).to.be('image@2x.png')
+        done()
+
+      it 'suffixes gif extensions', (done) ->
+        setRetina()
+        expect(Enhance().render('image.gif')).to.be('image@2x.gif')
+        done()
+
+      it 'suffixes tiff, tif, and tff extensions', (done) ->
+        setRetina()
+        expect(Enhance().render('image.tiff')).to.be('image@2x.tiff')
+        expect(Enhance().render('image.tif')).to.be('image@2x.tif')
+        expect(Enhance().render('image.tff')).to.be('image@2x.tff')
+        done()
+
+      it 'does not suffix unrecognized formats', (done) ->
+        setRetina()
+        expect(Enhance().render('image.pdf')).to.be('image.pdf')
+        done()
