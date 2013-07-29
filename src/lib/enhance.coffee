@@ -1,20 +1,19 @@
+_ = require('./lodash')
+
 Enhance = do ->
-  (initOpts) ->
-    initOpts ?= {}
-    initOpts.host   or= ''
-    initOpts.suffix or= '@2x'
+  (options) ->
+
+    defaults =
+      host: ''
+      suffix: '@2x'
+
+    options = _.merge(defaults, options)
 
     # Utility
 
-    merge = ->
-      i = arguments.length
-      while --i > 0
-        arguments[i-1][key] = val for key, val of arguments[i]
-      arguments[0]
-
     prependHost = (pathname) ->
-      pathname = '/' + pathname if initOpts.host.length && pathname[0] != '/'
-      initOpts.host + pathname
+      pathname = '/' + pathname if options.host.length && pathname[0] != '/'
+      options.host + pathname
  
     # Public methods
 
@@ -33,18 +32,17 @@ Enhance = do ->
     # Helper functions passed into init callbacks
     helpers =
       isHiDPI:     isHiDPI
-      merge:       merge
+      merge:       _.merge
       prependHost: prependHost
 
     render = (src, opts) ->
-      opts           = merge({ src: src }, opts)
-      enhanceHelpers = merge({}, initOpts, opts, helpers)
-      if initOpts.render?
-        initOpts.render?(enhanceHelpers)
+      opts = _.merge({ src: src }, opts)
+      if options.render?
+        options.render?(_.merge({}, options, opts, helpers))
       else
         if isHiDPI()
           i   = src.lastIndexOf('.')
-          src = src.slice(0,i) + initOpts.suffix + src.slice(i)
+          src = src.slice(0,i) + options.suffix + src.slice(i)
         prependHost(src)
 
 
