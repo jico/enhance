@@ -1,7 +1,7 @@
 {
   "name":        "enhance",
-  "version":     "0.0.0",
-  "description": "Enhancing images for Retina screens since 2013",
+  "version":     "0.0.1",
+  "description": "A flexible node.js module for serving high-res images to high pixel density devices.",
   "homepage":    "https://github.com/jico/enhance",
   "author": {
     "name":  "Jico Baligod",
