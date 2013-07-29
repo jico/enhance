@@ -1,5 +1,4 @@
 expect  = require('expect.js')
-fs      = require('fs')
 jsdom   = require('jsdom')
 Enhance = require('../lib/enhance')
 
@@ -74,7 +73,6 @@ describe 'Enhance', ->
             render: (enhance) ->
               expect(enhance._).to.be.a('function')
               expect(enhance.isHiDPI).to.be.a('function')
-              expect(enhance.prependHost).to.be.a('function')
               done()
 
           Enhance(initOpts).render('image.png')

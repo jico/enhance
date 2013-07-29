@@ -1,21 +1,13 @@
-_ = require('./lodash')
+_ = require('./lodash-ext')
 
 Enhance = do ->
   (options) ->
 
     defaults =
-      host: ''
+      host: null
       suffix: '@2x'
 
     options = _.merge(defaults, options)
-
-    # Utility
-
-    prependHost = (pathname) ->
-      pathname = '/' + pathname if options.host.length && pathname[0] != '/'
-      options.host + pathname
- 
-    # Public methods
 
     isHiDPI = (ratio) ->
       ratio ?= 1.3
@@ -33,7 +25,6 @@ Enhance = do ->
     helpers =
       _:           _
       isHiDPI:     isHiDPI
-      prependHost: prependHost
 
     render = (src, opts) ->
       opts = _.merge({ src: src }, opts)
@@ -43,7 +34,7 @@ Enhance = do ->
         if isHiDPI()
           i   = src.lastIndexOf('.')
           src = src.slice(0,i) + options.suffix + src.slice(i)
-        prependHost(src)
+        _.joinURIComponents(options.host, src)
 
 
     exports =
