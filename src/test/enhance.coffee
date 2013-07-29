@@ -72,8 +72,8 @@ describe 'Enhance', ->
         it 'has helper methods available', (done) ->
           initOpts =
             render: (enhance) ->
+              expect(enhance._).to.be.a('function')
               expect(enhance.isHiDPI).to.be.a('function')
-              expect(enhance.merge).to.be.a('function')
               expect(enhance.prependHost).to.be.a('function')
               done()
 

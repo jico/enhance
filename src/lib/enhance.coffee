@@ -31,8 +31,8 @@ Enhance = do ->
 
     # Helper functions passed into init callbacks
     helpers =
+      _:           _
       isHiDPI:     isHiDPI
-      merge:       _.merge
       prependHost: prependHost
 
     render = (src, opts) ->

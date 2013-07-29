@@ -105,8 +105,8 @@
             var initOpts;
             initOpts = {
               render: function(enhance) {
+                expect(enhance._).to.be.a('function');
                 expect(enhance.isHiDPI).to.be.a('function');
-                expect(enhance.merge).to.be.a('function');
                 expect(enhance.prependHost).to.be.a('function');
                 return done();
               }
