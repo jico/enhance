@@ -1,6 +1,6 @@
 {
   "name":        "enhance",
-  "version":     "0.0.1",
+  "version":     "0.0.2",
   "description": "A flexible node.js module for serving high-res images to high pixel density devices.",
   "homepage":    "https://github.com/jico/enhance",
   "author": {
