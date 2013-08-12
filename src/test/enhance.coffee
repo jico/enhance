@@ -1,5 +1,6 @@
 expect  = require('expect.js')
 jsdom   = require('jsdom')
+sinon   = require('sinon')
 Enhance = require('../lib/enhance')
 
 describe 'Enhance', ->
@@ -139,4 +140,31 @@ describe 'Enhance', ->
       it 'does not suffix unrecognized formats', (done) ->
         setRetina()
         expect(Enhance().render('image.pdf')).to.be('image.pdf')
+        done()
+
+  describe '#isMobileDevice', ->
+    describe 'with tablets not considered mobile devices', ->
+      it 'queries the media with a phone breakpoint', (done) ->
+        stubMatchMedia = sinon.stub `window`, 'matchMedia', -> { matches: false }
+        Enhance().isMobileDevice()
+        expect(stubMatchMedia.withArgs('only screen and (max-width: 480px)').calledOnce).to.be(true)
+        done()
+
+      it 'allows overriding the phone breakpoint', (done) ->
+        stubMatchMedia = sinon.stub `window`, 'matchMedia', -> { matches: false }
+        Enhance(phoneBreakpoint: 500).isMobileDevice()
+        expect(stubMatchMedia.withArgs('only screen and (max-width: 500px)').calledOnce).to.be(true)
+        done()
+
+    describe 'with tablets considered mobile devices', ->
+      it 'queries the media with a tablet breakpoint', (done) ->
+        stubMatchMedia = sinon.stub `window`, 'matchMedia', -> { matches: false }
+        Enhance(tabletAsMobile: true).isMobileDevice()
+        expect(stubMatchMedia.withArgs('only screen and (max-width: 1024px)').calledOnce).to.be(true)
+        done()
+
+      it 'allows overriding the tablet breakpoint', (done) ->
+        stubMatchMedia = sinon.stub `window`, 'matchMedia', -> { matches: false }
+        Enhance(tabletBreakpoint: 800, tabletAsMobile: true).isMobileDevice()
+        expect(stubMatchMedia.withArgs('only screen and (max-width: 800px)').calledOnce).to.be(true)
         done()

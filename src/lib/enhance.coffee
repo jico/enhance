@@ -4,8 +4,11 @@ Enhance = do ->
   (options) ->
 
     defaults =
-      host: null
-      suffix: '@2x'
+      host:             null
+      suffix:           '@2x'
+      phoneBreakpoint:  480
+      tabletBreakpoint: 1024
+      tabletAsMobile:   false
 
     options = _.merge(defaults, options)
 
@@ -21,10 +24,16 @@ Enhance = do ->
       if window.matchMedia?(query).matches then return true
       return false
 
+    isMobileDevice = ->
+      mobileDevice = if options.tabletAsMobile then 'tablet' else 'phone'
+      breakpoint   = options["#{mobileDevice}Breakpoint"]
+      window.matchMedia?("only screen and (max-width: #{breakpoint}px)").matches
+
+
     # Helper functions passed into init callbacks
     helpers =
-      _:           _
-      isHiDPI:     isHiDPI
+      _:              _
+      isHiDPI:        isHiDPI
 
     render = (src, opts) ->
       if options.render?
@@ -36,7 +45,8 @@ Enhance = do ->
 
 
     exports =
-      isHiDPI: isHiDPI
-      render:  render
+      isHiDPI:        isHiDPI
+      render:         render
+      isMobileDevice: isMobileDevice
 
 module.exports = Enhance
