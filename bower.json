@@ -1,6 +1,6 @@
 {
   "name": "enhance",
-  "main": "index.js",
+  "main": "lib/enhance.js",
   "version": "0.0.4",
   "homepage": "https://github.com/jico/enhance",
   "authors": [
