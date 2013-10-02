@@ -17,3 +17,19 @@ describe 'lodash extensions', ->
       url = _.joinURIComponents('http://example.com', 'assets', 'images.png')
       expect(url).to.be('http://example.com/assets/images.png')
       done()
+
+    it 'strips leading and trailing forward slashes in URI components', (done) ->
+      url = _.joinURIComponents('http://example.com', '/assets/', '/images.png')
+      expect(url).to.be('http://example.com/assets/images.png')
+      done()
+
+  describe '#trim', ->
+    it 'trims left and right whitespace by default', (done) ->
+      trimmedWord = _.trim(' hello   ')
+      expect(trimmedWord).to.be('hello')
+      done()
+
+    it 'trims left and right specified characters', (done) ->
+      trimmedWord = _.trim('/hello//', '/')
+      expect(trimmedWord).to.be('hello')
+      done()
