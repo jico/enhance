@@ -3,6 +3,6 @@ node_js:
   - 0.10
   - 0.8
 before_script:
-  coffee -c -o . src
-  npm install -g bower
-  bower install
+  - coffee -c -o . src
+  - npm install -g bower
+  - bower install
