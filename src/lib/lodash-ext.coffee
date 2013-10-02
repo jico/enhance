@@ -1,4 +1,4 @@
-_ = require('../vendor/lodash')
+_ = require('../vendor/lodash/dist/lodash')
 
 _.mixin
   joinURIComponents: ->

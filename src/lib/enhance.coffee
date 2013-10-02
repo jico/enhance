@@ -49,4 +49,5 @@ Enhance = do ->
       render:         render
       isMobileDevice: isMobileDevice
 
-module.exports = Enhance
+window?.Enhance = Enhance
+module?.exports = Enhance

@@ -1,0 +1,25 @@
+{
+  "name": "enhance",
+  "main": "index.js",
+  "version": "0.0.4",
+  "homepage": "https://github.com/jico/enhance",
+  "authors": [
+    "Jico Baligod <jico@baligod.com>"
+  ],
+  "description": "A flexible utility for serving high-res images to high pixel density devices.",
+  "keywords": [
+    "enhance",
+    "retina",
+    "hiDPI"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "vendor"
+  ],
+  "dependencies": {
+    "lodash": "2.2.0"
+  }
+}
