@@ -1,7 +1,7 @@
 {
   "name": "enhance",
   "main": "lib/enhance.js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "homepage": "https://github.com/jico/enhance",
   "authors": [
     "Jico Baligod <jico@baligod.com>"

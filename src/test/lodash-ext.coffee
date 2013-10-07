@@ -23,6 +23,11 @@ describe 'lodash extensions', ->
       expect(url).to.be('http://example.com/assets/images.png')
       done()
 
+    it 'respects relative protocol URI components', (done) ->
+      url = _.joinURIComponents('//example.com', '/assets/', '/images.png')
+      expect(url).to.be('//example.com/assets/images.png')
+      done()
+
   describe '#trim', ->
     it 'trims left and right whitespace by default', (done) ->
       trimmedWord = _.trim(' hello   ')

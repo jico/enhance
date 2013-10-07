@@ -2,11 +2,11 @@ _ = require('../vendor/lodash/dist/lodash')
 
 _.mixin
   joinURIComponents: ->
+    leadingSlashes = arguments[0]?.match(/^[\/]{1,2}/) || ''
     components = _.map arguments, (str, i) ->
       _.trim(str, '/').split(/\/(?!\/)/) if str?
 
-    uri  = if arguments[0]?[0] == '/' then '/' else ''
-    uri += _.flatten(_.compact(components)).join('/')
+    uri = leadingSlashes + _.flatten(_.compact(components)).join('/')
 
   trim: (string, characters) ->
     characters ?= '\\s'
