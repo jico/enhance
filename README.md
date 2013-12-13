@@ -4,12 +4,16 @@ A flexible node.js module for serving high-res images to high pixel density devi
 
 ## Installation
 
-Add `enhance` to your `package.json` file and run `npm install`.
+### Via npm
 
-Alternatively, you can run `npm install enhance --save`.
+Add `enhance` to your `package.json`, or run `npm install --save`.
 
 If you're using Hem, make sure to add it to your `slug.json` file as a
 dependency.
+
+### Via Bower
+
+Add `enhance` to your `bower.json`, or run `bower install --save`.
 
 ## Usage
 
