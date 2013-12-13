@@ -1,6 +1,6 @@
 {
   "name":        "enhance",
-  "version":     "0.0.6",
+  "version":     "0.0.7",
   "description": "A flexible node.js module for serving high-res images to high pixel density devices.",
   "homepage":    "https://github.com/jico/enhance",
   "author": {
@@ -19,6 +19,7 @@
     }
   ],
   "devDependencies": {
+    "browserify":    "3.2.2",
     "coffee-script": "1.6.3",
     "expect.js":     "0.2.0",
     "jsdom":         "0.5.6",
@@ -27,8 +28,8 @@
   },
   "main": "./index.js",
   "scripts": {
-    "build": "./node_modules/.bin/coffee -co . src",
+    "build": "./node_modules/.bin/coffee -co . src && ./node_modules/.bin/browserify lib/enhance.js -o build/enhance.js",
     "test":  "./node_modules/.bin/mocha --reporter spec --timeout 4000 --ignore-leaks",
-    "watch": "./node_modules/.bin/coffee -wo . src"
+    "watch": "./node_modules/.bin/coffee -wo . src && ./node_modules/.bin/browserify lib/enhance.js -o build/enhance.js"
   }
 }

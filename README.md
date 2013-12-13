@@ -21,6 +21,13 @@ like:
 Enhance = require('enhance')(options)
 ```
 
+You can also use the browserified version by including `build/enhance.js` in
+your app and passing in your options to the `Enhance` object on the `window`.
+
+```coffee
+Enhance(options).render('image.png')
+```
+
 ### `render`
 
 Given no [configuration options](#configuration), _Enhance_ falls back to
